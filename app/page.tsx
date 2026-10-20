@@ -20,7 +20,7 @@ import {
   Table,
   X,
 } from "@phosphor-icons/react";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 const capabilities = [
   {
@@ -90,19 +90,10 @@ const faqs = [
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
-  const [loginFeedback, setLoginFeedback] = useState("");
 
   function openLogin() {
     setMenuOpen(false);
-    setLoginFeedback("");
     setLoginOpen(true);
-  }
-
-  function submitLogin(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setLoginFeedback(
-      "Esta é a demonstração visual. A autenticação será conectada na próxima etapa.",
-    );
   }
 
   return (
@@ -390,19 +381,8 @@ export default function Home() {
             <span className="eyebrow">Ambiente interno</span>
             <h2 id="login-title">Acesse o WayNIR</h2>
             <p>Use as credenciais fornecidas pelo administrador da unidade.</p>
-            <form onSubmit={submitLogin}>
-              <label htmlFor="username">Usuário</label>
-              <input id="username" name="username" type="text" placeholder="Digite seu usuário" required />
-              <label htmlFor="password">Senha</label>
-              <input id="password" name="password" type="password" placeholder="Digite sua senha" required />
-              <button className="primary-button modal-submit" type="submit">
-                Entrar
-                <ArrowRight size={17} weight="bold" />
-              </button>
-            </form>
-            {loginFeedback && <div className="login-feedback">{loginFeedback}</div>}
-            <Link className="demo-platform-link" href="/dashboard">
-              Entrar na demonstração do frontend
+            <Link className="demo-platform-link secure-access-link" href="/login">
+              Continuar para o acesso seguro
               <ArrowRight size={17} weight="bold" />
             </Link>
             <span className="modal-help">Problemas de acesso? Procure o gestor do NIR.</span>

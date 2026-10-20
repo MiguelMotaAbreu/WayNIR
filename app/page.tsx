@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -400,6 +401,10 @@ export default function Home() {
               </button>
             </form>
             {loginFeedback && <div className="login-feedback">{loginFeedback}</div>}
+            <Link className="demo-platform-link" href="/dashboard">
+              Entrar na demonstração do frontend
+              <ArrowRight size={17} weight="bold" />
+            </Link>
             <span className="modal-help">Problemas de acesso? Procure o gestor do NIR.</span>
           </section>
         </div>

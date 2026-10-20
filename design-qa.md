@@ -1,46 +1,51 @@
-# Design QA — WayNIR Landing Page
+# Design QA — WayNIR
 
-- Source visual truth: `ui-ref/landing-ref.JPG`
-- Supporting product reference: `ui-ref/plataform-ref.JPG`
-- Intended implementation: `http://localhost:3000/`
-- Intended desktop viewport: 1440 × 1000 CSS px, device scale factor 1
-- Source dimensions: 736 × 1104 px
-- State: landing page inicial, menu fechado e modal de acesso fechado
+## Alvo da comparação
 
-## Evidence
+- Fonte visual principal: `ui-ref/plataform-ref.JPG`
+- Requisitos analíticos: seção 20 de `../plan.md`
+- Implementação principal: `http://localhost:3000/analises`
+- Viewport pretendido: 1366 × 768 CSS px, densidade 1
+- Dimensões da referência: 736 × 1104 px
+- Estado: metodologia exata, últimos 7 dias, todos os setores, especialidades e destinos
 
-- The source reference was opened and visually inspected.
-- The implementation compiles successfully and the local development server is running.
-- A browser-rendered implementation screenshot could not be captured because no integrated browser surface is available in this session.
-- Full-view and focused-region comparisons are therefore pending.
-- Primary interactions and browser console checks are also pending.
+## Evidências disponíveis
 
-## Findings
+- A referência visual foi aberta e inspecionada em resolução original.
+- A implementação preserva a linguagem visual da referência: sidebar azul-marinho, cabeçalho compacto, superfícies claras, cartões analíticos e gráficos em azul, verde, âmbar e violeta.
+- A nova rota `/analises` responde com HTTP 200 e contém o título esperado no HTML renderizado.
+- `npm run lint` foi concluído sem erros ou avisos.
+- `npm run build` foi concluído com sucesso e a rota foi pré-renderizada estaticamente.
+- Foram implementados filtros globais, metodologia exata/legado, alternância gráfico/tabela e exportações simuladas.
 
-- [P0] Browser-rendered visual evidence is unavailable.
-  - Location: full landing page.
-  - Evidence: source image is available, but there is no implementation screenshot at a matching viewport.
-  - Impact: typography, spacing, responsive layout, assets, interactions and browser errors cannot be validated visually.
-  - Fix: authorize a local Playwright capture or provide an available browser surface, then compare the reference and implementation together.
+## Bloqueio de comparação visual
 
-## Required fidelity surfaces
+- [P0] Não há superfície de navegador integrada disponível nesta sessão.
+  - Local: `/analises` e demais rotas autenticadas.
+  - Evidência: o inventário de Computer Use retornou `apps: []` e `browsers: []`.
+  - Impacto: não existe screenshot da implementação para compor uma comparação lado a lado com a referência. Também não foi possível testar interações no navegador, responsividade real ou erros do console.
+  - Correção necessária: disponibilizar um navegador integrado ou autorizar uma captura local por Playwright em uma rodada futura.
 
-- Fonts and typography: pending browser capture.
-- Spacing and layout rhythm: pending browser capture.
-- Colors and visual tokens: pending browser capture.
-- Image quality and asset fidelity: generated assets exist; placement pending browser capture.
-- Copy and content: implemented from `plan.md`; rendered wrapping pending browser capture.
+## Superfícies de fidelidade
 
-## Implementation checklist
+- Fontes e tipografia: definidas com a mesma família e hierarquia do restante do produto; verificação visual pendente.
+- Espaçamento e ritmo: grade responsiva de três, duas e uma coluna implementada; verificação visual pendente.
+- Cores e tokens: reutilização dos tokens clínicos existentes; comparação visual pendente.
+- Imagens e ativos: a área analítica usa apenas UI e gráficos Recharts; não há novos ativos raster necessários.
+- Copy e conteúdo: indicadores correspondem ao `plan.md`, com dados explicitamente fictícios.
 
-- Capture the full landing page at the intended desktop viewport.
-- Test navigation anchors, FAQ controls, login modal and form feedback.
-- Check the browser console.
-- Capture a mobile viewport.
-- Compare source and implementation together and fix all P0/P1/P2 differences.
+## Checklist pendente no navegador
 
-## Comparison history
+- Capturar `/analises` em 1366 × 768 e uma captura longa da página.
+- Comparar referência e implementação na mesma entrada visual.
+- Testar filtros, metodologia, alternância gráfico/tabela, cópia e exportação simulada.
+- Validar layouts de 820 px e 390 px.
+- Inspecionar console e acessibilidade após interação.
+- Corrigir diferenças P0/P1/P2 encontradas na comparação visual.
 
-- Initial pass: blocked before visual comparison because the integrated browser is unavailable.
+## Histórico
+
+- Passo 1: expansão analítica implementada e validada por lint, build e resposta HTTP.
+- Passo 2: captura visual bloqueada pela ausência de navegador integrado.
 
 final result: blocked
